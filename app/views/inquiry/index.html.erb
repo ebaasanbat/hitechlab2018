@@ -1,0 +1,78 @@
+ <nav class="navbar navbar-default navbar-fixed-top" id="nav">
+  <div class="container-fluid"> 
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#defaultNavbar1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+      </div>
+        <div class="collapse navbar-collapse" id="defaultNavbar1">
+          <ul class="nav navbar-nav navbar-right">
+              <li><% if user_signed_in? %>
+               <li><%= link_to "NEW NOTE", new_note_path %> </li>
+               <li><%= link_to "SIGN OUT", destroy_user_session_path, method: :delete %></li>
+               <% else %> 
+               <li><%= link_to "HOME", welcome_index_path%></li>
+              <li><%= link_to "LOGIN", new_user_session_path %></li>
+            <% end %>
+
+            </li>
+
+      </ul>
+    </div>
+    <!-- /.navbar-collapse --> 
+  </div>
+  <!-- /.container-fluid --> 
+</nav>
+<section class="inquiry">
+ <div class="container">
+      <div class="row">
+        <div class="wrapper">
+          <div class="col-md-6">
+    <div class="info">
+          <h3><i class="fa fa-envelope" aria-hidden="true"></i> MAIL: <a href="nishikawa@hitechlab.co.jp">nishikawa@hitechlab.co.jp</a> <br><i class="fa fa-phone" aria-hidden="true"></i> TEL: <a href="tel:0668498883"> 06-6849-8883 </a> <br><i class="fa fa-fax" aria-hidden="true"></i> FAX: 06-6849-5337 </h3>
+            <hr>
+    </div>
+
+<%= form_for @inquiry, :url => inquiry_confirm_path do |f| %>
+  <div class="page-header">
+    <h1>お問い合わせ</h1>
+  </div>
+ 
+  <% if @inquiry.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+      <strong>入力内容にエラーがあります</strong>
+      <ul>
+        <% @inquiry.errors.each do |attr, msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <table class="table">
+    <tr>
+      <th>名前<span class="text-danger">（必須）</span></th>
+      <td><%= f.text_field :name, :size => "30x1" %></td>
+    </tr>
+
+    <tr>
+      <th>メールアドレス<span class="text-danger">（必須）</span></th>
+      <td><%= f.text_field :email, :size => "30x1" %></td>
+    </tr>
+
+    <tr>
+      <th>お問い合わせ内容</th>
+      <td><%= f.text_area :message, :size => "30x10" %>
+      </td>
+    </tr>
+  </table>
+  <%= f.submit '確認', class: 'btn btn-default' %>
+<% end %>
+</div>
+          <div class="col-md-4">
+              <div class="map">
+              <p4><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3276.4691765684265!2d135.43948051458216!3d34.79413628041061!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000f07b6717aadb%3A0x37b26ccec89a4bc9!2z5pyJ6ZmQ5Lya56S-IOODj-OCpOODhuOCr-ODqeODnA!5e0!3m2!1sja!2sjp!4v1508850203464" class="img-rounded" ></iframe></p4>
+              </div>
+           </div>
+</div>
+</div>
+</div>
+</section>

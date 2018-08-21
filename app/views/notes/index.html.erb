@@ -1,0 +1,41 @@
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top" id="nav">
+  <div class="container-fluid"> 
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#defaultNavbar1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+      </div>
+        <div class="collapse navbar-collapse" id="defaultNavbar1">
+          <ul class="nav navbar-nav navbar-right">
+              <li><% if user_signed_in? %>
+               <li><%= link_to "NEW NOTE", new_note_path %> </li>
+               <li><%= link_to "SIGN OUT", destroy_user_session_path, method: :delete %></li>
+               <% else %> 
+               <li><a href="#home">HOME</a></li>
+               <li><a href="#about">ABOUT</a></li>
+               <li><%= link_to "CONTACT", inquiry_index_path %></li>
+              <li><%= link_to "LOGIN", new_user_session_path %></li>
+            <% end %>
+
+            </li>
+
+      </ul>
+    </div>
+    <!-- /.navbar-collapse --> 
+  </div>
+  <!-- /.container-fluid --> 
+</nav>
+<div class="container">
+    	<div class="row">
+    		<div class="wrapper">
+    			
+    			<% @notes.each do |note| %>
+    			<h1><%= link_to note.title, note %></h1>
+    			<p2><%= time_ago_in_words(note.created_at) %></p2>
+    			<% end %>
+				<br>
+				<button type="button" class="btn btn-default btn-sm" ><%= link_to "New Note", new_note_path %></button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

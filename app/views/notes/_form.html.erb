@@ -1,0 +1,16 @@
+
+	<%= simple_form_for @note, :html => { :class => 'form-horizontal' } do |f| %>
+  			<div class=form-inline>
+  		<%= f.input :date %>
+  			</div>
+  		<%= f.input :title %>
+  			<div class=container>
+  			<div class=form-group>
+					<%= f.input :content, :input_html => {:rows => 8}  %>
+				</div>
+			</div>
+		<%= f.button :submit %>
+	<% end %> 
+
+
+

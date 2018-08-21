@@ -1,0 +1,210 @@
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top" id="nav">
+  <div class="container-fluid"> 
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#defaultNavbar1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+      </div>
+        <div class="collapse navbar-collapse" id="defaultNavbar1">
+          <ul class="nav navbar-nav navbar-right">
+              <li><% if user_signed_in? %>
+               <li><%= link_to "NEW NOTE", new_note_path %> </li>
+               <li><%= link_to "SIGN OUT", destroy_user_session_path, method: :delete %></li>
+               <% else %> 
+               <li><a href="#home">HOME</a></li>
+               <li><a href="#about">ABOUT</a></li>
+               <li><%= link_to "CONTACT", inquiry_index_path %></li>
+              <li><%= link_to "LOGIN", new_user_session_path %></li>
+            <% end %>
+
+            </li>
+
+      </ul>
+    </div>
+    <!-- /.navbar-collapse --> 
+  </div>
+  <!-- /.container-fluid --> 
+</nav>
+<!-- BACK TO TOP -->
+<a href="#home" class="back-to-top" style="display: inline">
+<i class="fa fa-arrow-circle-up"></i>
+</a>
+
+<!-- Bootstrap -->
+<link href="css/bootstrap.css" rel="stylesheet">
+<!-- MAIN CSS -->
+<link rel="stylesheet" href="assets/stylesheet/welcome.scss">
+<!-- ANIMATE CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- MAIN BODY START -->
+<header class="home" id="home">
+	<div class="container-fluid">
+  		<div class="row">
+    		<div class="col-md-6 col-md-offset-3">
+    	<div class="text-center">
+    	<!-- <img scr="app/assests/images/LogoB.png" class="animated zoomIn" href="#home"> -->
+      <div class="animated zoomIn" href="#home">
+        <%= image_tag "LogoB.png" %>
+
+      </div>
+        
+        <h1 class="animated zoomIn">有限会社ハイテクラボ</h1>
+        
+        </div>
+    </div>
+  </div>
+ </div>
+ </header>
+ <!-- MAIN BODY FINISH -->
+<div class="about" id="about">
+  <div>
+    <div class="container">
+            <div class="wrapper">
+              <div class="col-md-6">
+                <div class="about-content">
+                   <h2>この会社は</h2>
+                    <p2> Demo
+                     </p2>
+                   </div> 
+                 </div>
+               <div class="col-md-6">
+              <div class="wrapper">
+            <div class="about-photo">
+          <cite><div class="img-responsive"><%= image_tag "building.png" %>
+              </div> 
+                 </cite>
+                   </div>
+                    </div>
+                     </div>
+                       </div>  
+                     </div>
+  </div>
+  <div>
+    <div class="container">
+            <div class="wrapper">
+              <div class="col-md-6">
+                <div class="about-content">
+                   <h2>社長から</h2>
+                    <p2> Demo
+                     </p2>
+                   </div> 
+                 </div>
+               <div class="col-md-6">
+              <div class="wrapper">
+            <div class="about-photo">
+          <cite><div class="img-responsive"><%= image_tag "profile.png" %>
+              </div> 
+                 </cite>
+                   </div>
+                    </div>
+                     </div>
+                       </div>  
+                     </div>
+  </div>
+  <div>
+    <div class="container">
+            <div class="wrapper">
+              <div class="col-md-6">
+                <div class="about-content">
+                   <h2>事業内容</h2>
+                    <p2> Demo
+                     </p2>
+                   </div> 
+                 </div>
+               <div class="col-md-6">
+              <div class="wrapper">
+            <div class="about-photo">
+          <cite><div class="img-responsive"><%= image_tag "building.png" %>
+              </div> 
+                 </cite>
+                   </div>
+                    </div>
+                     </div>
+                       </div>
+                       </div>
+  </div>
+</div>
+ 
+ <!-- CONTACT START -->
+ <section class="contact" id="contact">
+	<div class="container">
+    	<div class="row">
+    		<div class="wrapper">
+    	   <div class="info">
+        	<h3><i class="fa fa-envelope" aria-hidden="true"></i> MAIL: <a href="nishikawa@hitechlab.co.jp">nishikawa@hitechlab.co.jp</a> <br><i class="fa fa-phone" aria-hidden="true"></i> TEL: <a href="tel:0668498883"> 06-6849-8883 </a> <br><i class="fa fa-fax" aria-hidden="true"></i> FAX: 06-6849-5337 </h3>
+            <hr>
+		      </div>
+      <button type="button" class="btn btn-default btn-sm" ><%= link_to "問い合わせ", inquiry_index_path %></button>    
+      <br>
+      <br>  
+    </div>
+    </div>
+    </div>
+</section>
+ 
+ <!-- CONTACT FINISH -->
+ 
+ 
+ <script>
+    jQuery(document).ready(function() {
+    var offset = 250;
+    var duration = 300;
+    jQuery(window).scroll(function() {
+    if (jQuery(this).scrollTop() > offset) {
+    jQuery('.back-to-top').fadeIn(duration);
+    } else {
+    jQuery('.back-to-top').fadeOut(duration);
+    }
+    });
+    jQuery('.back-to-top').click(function(event) {
+    event.preventDefault();
+    jQuery('html, body').animate({scrollTop: 0}, duration);
+    return false;
+    })
+    });
+</script>
+<!-- BACK TO TOP jQuery END -->
+
+<!-- SMOOTH SCROLL START-->
+<script>    
+      $(document).ready(function(){
+  $('nav li a').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+    && location.hostname == this.hostname) {
+      var $target = $(this.hash);
+      $target = $target.length && $target
+      || $('[name=' + this.hash.slice(1) +']');
+      if ($target.length) {
+        var targetOffset = $target.offset().top;
+        $('html,body')
+        .animate({scrollTop: targetOffset}, 700);
+       return false;
+      }
+    }
+  });
+});
+</script>
+
+<script>
+$(function() {
+    $('.about').slick({
+          dots: true,
+          arrows: true,
+          infinite: true,
+          slidesToShow: 1,
+          centerMode: true, 
+          autoplay:true,
+          autoplaySpeed:4000,
+          touchMove:true,
+          responsive: [{
+               breakpoint: 1024,
+                    settings: {
+                         centerMode: false,
+               }
+          }]
+     });
+});
+</script>
+ 
+</body>

@@ -1,0 +1,14 @@
+
+<div class="container">
+    	<div class="row">
+    		<div class="wrapper">
+				<h1><%= @note.title %> </h1>
+				<p1><%= @note.content %> </p1>
+				<p><%= @note.date %> </p>
+				<br>
+				<button type="button" class="btn btn-default btn-sm" ><%= link_to "All Notes", notes_path %></button>
+				<button type="button" class="btn btn-default btn-sm" ><%= link_to "Edit", edit_note_path(@note) %></button>
+				<button type="button" class="btn btn-default btn-sm" ><%= link_to "Delete", note_path(@note), method: :delete, data: { confirm: "Are you sure?"} %></button>
+</div>
+</div>
+</div>
